@@ -3,15 +3,9 @@ const ExtendedPlugin = require('./lib/ExtendedPlugin');
 const Settings = require("./Settings.jsx");
 
 module.exports = class PowerFindAndReplace extends ExtendedPlugin {
-    defaults = [
-        [">:(", "😡"],
-        [":)", "😄"],
-        [":(", "😦"],
-    ];
-
-    startPlugin() {
-        if(!this.settings.get("replacements")) this.settings.set("replacements", this.defaults);
-        this.registerSettings('powerfnf', 'Find and Replace', () => React.createElement(Settings, {settings: this.settings}));
+    
+	startPlugin() {       
+        this.registerSettings('powerfnr', 'Find and Replace', () => React.createElement(Settings, {settings: this.settings}));
     }
 
     onSendMessage(msg) {

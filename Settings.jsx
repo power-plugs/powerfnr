@@ -7,7 +7,7 @@ module.exports = class Settings extends React.Component {
   }
 
   render () {
-    var dval = JSON.stringify(JSON.stringify(this.getSetting("replacements", []))).replace(/\\\"/g,'"');
+    var dval = JSON.stringify(JSON.stringify(this.props.getSetting("replacements", []))).replace(/\\\"/g,'"');
     dval = dval.substring(1, dval.length - 1);
     return (<div>
 	  <TextInput 
@@ -16,7 +16,7 @@ module.exports = class Settings extends React.Component {
 	  defaultValue={dval} 
 	  required={true} 
 	  onChange={(val) => {
-	    this.updateSetting('replacements', JSON.parse(val), 1234)
+	    this.props.updateSetting('replacements', JSON.parse(val), 1234)
 	  }}
 	  >
 	  Code

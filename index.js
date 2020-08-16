@@ -13,7 +13,7 @@ module.exports = class PowerFindAndReplace extends ExtendedPlugin {
     }
 
     pluginWillUnload () {
-        powercord.api.settings.unregisterSettings('powerstatus');
+        powercord.api.settings.unregisterSettings('powerfnr');
     }
 
     onSendMessage(msg) {

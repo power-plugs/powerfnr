@@ -7,13 +7,11 @@ module.exports = class Settings extends React.Component {
   }
 
   render () {
-    var dval = JSON.stringify(JSON.stringify(this.props.getSetting("replacements", []))).replace(/\\\"/g,'"');
-    dval = dval.substring(1, dval.length - 1);
     return (<div>
 	  <TextInput 
 	  note='Current replacements (Format as Stringified JSON). Example: 
 	  [[">:(","😡"],[":)","😄"],[":(","😦"]]'
-	  defaultValue={dval} 
+	  defaultValue={JSON.stringify(this.props.getSetting("replacements", []))} 
 	  required={true} 
 	  onChange={(val) => {
 	    this.props.updateSetting('replacements', JSON.parse(val), 1234)

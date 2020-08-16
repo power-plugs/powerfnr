@@ -9,7 +9,7 @@ module.exports = class Settings extends React.Component {
   }
 
   render () {
-    var dval = JSON.stringify(JSON.stringify(this.settings.get("replacements", []))).replace(/\\/g,'');
+    var dval = JSON.stringify(JSON.stringify(this.settings.get("replacements", []))).replace(/\\"/g,'"');
     dval = dval.substring(1, dval.length - 1);
     return (<div>
 	  <TextInput 

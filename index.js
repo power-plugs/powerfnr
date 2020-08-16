@@ -4,8 +4,16 @@ const Settings = require("./Settings.jsx");
 
 module.exports = class PowerFindAndReplace extends ExtendedPlugin {
     
-	startPlugin() {       
-        this.registerSettings('powerfnr', 'Find and Replace', () => React.createElement(Settings, {settings: this.settings}));
+    startPlugin() {
+        powercord.api.settings.registerSettings('powerfnr', {
+            category: this.entityID,
+            label: 'Find and Replace',
+            render: Settings
+        });
+    }
+
+    pluginWillUnload () {
+        powercord.api.settings.unregisterSettings('powerstatus');
     }
 
     onSendMessage(msg) {

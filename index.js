@@ -5,6 +5,7 @@ const Settings = require("./Settings.jsx");
 module.exports = class PowerFindAndReplace extends ExtendedPlugin {
     
     startPlugin() {
+        this.loadStylesheet('style.scss')
         powercord.api.settings.registerSettings('powerfnr', {
             category: this.entityID,
             label: 'Find and Replace',
@@ -21,11 +22,10 @@ module.exports = class PowerFindAndReplace extends ExtendedPlugin {
     }
 
     process(text) {
-        var replacements = this.settings.get("replacements", []);
+        let replacements = this.settings.get("replacements");
         for (let i = 0; i < replacements.length; i++) {
             const replace = replacements[i];
-            if (!replace[0].trim() == '')
-                while (text.includes(replace[0])) text = text.replace(replace[0], replace[1]);
+            while (text.includes(replace.original)) text = text.replace(replace.original, replace.replacement);
         }
 
         return text;
